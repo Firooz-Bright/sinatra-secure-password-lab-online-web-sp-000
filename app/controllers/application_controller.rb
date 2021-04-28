@@ -17,6 +17,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/signup" do
+    
     if  params[:username].empty? || params[:password].empty? 
 
     	 @error= "User Name and Password can't be blank"
