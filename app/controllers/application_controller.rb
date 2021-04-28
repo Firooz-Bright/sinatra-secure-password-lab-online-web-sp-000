@@ -22,16 +22,11 @@ class ApplicationController < Sinatra::Base
 
     	 @error= "User Name and Password can't be blank"
 
-    	 erb :'users/login'
-
-    elsif  @user=User.find_by(username: params[:username]) 
-
-             session[:user_id] = @user.id
-             redirect '/recipes'
-     else
-      
-     	@error ="Account not found "
-     	  erb :'users/login'
+    	 redirect '/failure'
+    else
+      User.create(username: params[:username], password: params[:password])
+      redirect '/login'
+    end
 
 
   end
